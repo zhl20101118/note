@@ -1,0 +1,8 @@
+name = "note"
+main = "src/worker.js"
+compatibility_date = "2026-06-04"
+
+# KV 绑定（与线上一致）
+[[kv_namespaces]]
+binding = "NOTE-KV"
+id = "8e8c5b32214a43e5bc278f09d6c7837d"
