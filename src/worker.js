@@ -1,8 +1,8 @@
 // ========== 配置区域 ==========
 const KV_BINDING_NAME = "NOTE-KV";  // 改成你在 Cloudflare 绑定 KV 时填写的 Variable name
 const ADMIN_USER = "zhl2010";
-const ADMIN_PASS = "note_zhl2010";
-const ADMIN_TOKEN = "admin_secure_token_7f3e9a2b1c";
+const ADMIN_PASS = "123456";
+const ADMIN_TOKEN = "admin_secure_token_24gh2g2gh9h";
 // ==============================
 
 export default {
