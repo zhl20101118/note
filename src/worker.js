@@ -60,13 +60,18 @@ export default {
       const cookie = request.headers.get("Cookie") || "";
       if (!cookie.includes(`admin_token=${ADMIN_TOKEN}`)) return new Response("Unauthorized", { status: 401 });
       const keys = await kv.list();
-      const allData = [];
-      for (const key of keys.keys) {
-        const value = await kv.get(key.name);
-        if (value) allData.push(JSON.parse(value));
-      }
+      // 并发读取所有 KV，避免逐条串行 await 造成的长时间等待
+      const allData = (await Promise.all(
+        keys.keys.map(async (key) => {
+          const value = await kv.get(key.name);
+          if (!value) return null;
+          try { return JSON.parse(value); } catch { return null; }
+        })
+      )).filter(Boolean);
       allData.sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime());
-      return new Response(JSON.stringify(allData), { headers: { "Content-Type": "application/json" } });
+      return new Response(JSON.stringify(allData), {
+        headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
+      });
     }
 
     // 6. API: 删除验证码
