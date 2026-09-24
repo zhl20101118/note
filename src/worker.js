@@ -184,6 +184,7 @@ function getAdminPage() {
         .container { max-width: 1400px; margin: 0 auto; }
         .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; flex-wrap: wrap; gap: 16px; }
         h1 { font-size: 28px; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 10px; }
+        .ver-badge { font-size: 14px; background: #e2e8f0; color: #334155; padding: 4px 12px; border-radius: 40px; }
         .logout-btn { background: #ef4444; color: white; border: none; padding: 8px 24px; border-radius: 40px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
         .logout-btn:hover { background: #dc2626; }
         .stats-bar { background: white; border-radius: 20px; padding: 20px 28px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
@@ -223,6 +224,7 @@ function getAdminPage() {
         .theme-btn:hover { border-color: #3b82f6; color: #3b82f6; }
         body.dark { background: #0b1220; }
         body.dark h1 { color: #e2e8f0; }
+        body.dark .ver-badge { background: #334155; color: #cbd5e1; }
         body.dark .card, body.dark .stats-bar { background: #1e293b; box-shadow: none; }
         body.dark .stat-item { background: #334155; }
         body.dark .stat-label { color: #cbd5e1; }
@@ -251,7 +253,7 @@ function getAdminPage() {
 <body>
 <div class="container">
     <div class="header">
-        <h1>📨 短信验证码看板 <span style="font-size: 14px; background:#e2e8f0; padding:4px 12px; border-radius:40px;">管理版</span></h1>
+        <h1>📨 短信验证码看板 <span class="ver-badge">管理版</span></h1>
         <div style="display:flex; gap:12px; align-items:center;">
             <button class="theme-btn" id="themeBtn">🌙 暗色</button>
             <button class="logout-btn" id="logoutBtn">🚪 退出登录</button>
